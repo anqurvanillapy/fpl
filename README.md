@@ -5,6 +5,7 @@
 ## Languages to use
 
 * Haskell
+* Agda
 
 ## License
 
