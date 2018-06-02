@@ -25,3 +25,11 @@ cabal.project.local
 
 
 # End of https://www.gitignore.io/api/haskell
+
+# Created by https://www.gitignore.io/api/agda
+
+### Agda ###
+*.agdai
+
+
+# End of https://www.gitignore.io/api/agda
