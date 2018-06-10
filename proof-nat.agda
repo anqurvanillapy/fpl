@@ -8,6 +8,8 @@ data ℕ : Set where
 
 {-# BUILTIN NATURAL ℕ #-}
 
+{- Addition -}
+
 _+_ : ℕ → ℕ → ℕ
 zero    + n =  n
 (suc m) + n =  suc (m + n)
@@ -31,6 +33,8 @@ _ =
 _ : 1 + 1 ≡ 2
 _ = refl
 
+{- Multiplication -}
+
 _*_ : ℕ → ℕ → ℕ
 zero * n    = zero
 (suc m) * n = n + (m * n)
@@ -51,6 +55,8 @@ _ =
 
 _ : 1 * 1 ≡ 1
 _ = refl
+
+{- Exponentiation -}
 
 _^_ : ℕ → ℕ → ℕ
 n ^ 0       = 1
@@ -73,4 +79,27 @@ _ =
   ∎
 
 _ : 42 ^ 0 ≡ 1
+_ = refl
+
+{- Monus -}
+
+_∸_ : ℕ → ℕ → ℕ
+m       ∸ zero    = m
+zero    ∸ (suc n) = zero
+(suc m) ∸ (suc n) = m ∸ n
+
+_ : 2 ∸ 1 ≡ 1
+_ =
+  begin
+    2 ∸ 1
+  ≡⟨⟩
+    1 ∸ 0
+  ≡⟨⟩
+    1
+  ∎
+
+_ : 7 ∸ 4 ≡ 3
+_ = refl
+
+_ : 4 ∸ 7 ≡ 0
 _ = refl
