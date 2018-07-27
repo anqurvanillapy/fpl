@@ -6,6 +6,7 @@
 
 * Haskell
 * Agda
+* Scheme
 
 ## License
 
