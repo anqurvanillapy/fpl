@@ -9,10 +9,10 @@ type StepAlgebra b = (b, b -> b)
 
 data Nat = Zero | Succ Nat
 
--- Algebra Nat mapped to algebra b.
+-- | Algebra Nat mapped to algebra b.
 foldSteps :: StepAlgebra b -> Nat -> b
 foldSteps (nil, next) Zero          = nil
 foldSteps (nil, next) (Succ nat)    = next $ foldSteps (nil, next) nat
 
 main :: IO ()
-main = putStr (foldSteps (">", \s -> "=" ++ s) (Succ . Succ . Succ $ Zero))
+main = putStr $ foldSteps (">", ("=" ++)) (Succ . Succ . Succ $ Zero)

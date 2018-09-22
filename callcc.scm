@@ -39,7 +39,6 @@
 
 ;;; Generator.
 
-
 (newline)
 
 ;; Note: (define x 42) (set! x (set! x (+ x x))) returns 84 but x is 42, hence
