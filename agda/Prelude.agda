@@ -6,7 +6,6 @@
 
 module Prelude where
 
-open import Agda.Primitive public
 open import Agda.Builtin.Equality public
 open import Agda.Builtin.Nat renaming (Nat to ℕ) public
 
@@ -21,7 +20,7 @@ _ = refl
 
 -- Composition
 _∘_ :
-  {ℓ m n : Level}
+  ∀ {ℓ m n}
   {A : Set ℓ}
   {B : Set m}
   {C : B → Set n}
@@ -36,7 +35,7 @@ _ = refl
 
 -- Transitivity
 trans :
-  {ℓ : Level}
+  ∀ {ℓ}
   {A : Set ℓ}
   {x y z : A}
   (q : y ≡ z)
@@ -47,7 +46,7 @@ trans n refl = n
 
 -- Symmetry
 symm :
-  {ℓ : Level}
+  ∀ {ℓ}
   {A : Set ℓ}
   {x y : A}
   (p : x ≡ y)
@@ -57,7 +56,7 @@ symm refl = refl
 
 -- Congruence
 cong :
-  {ℓ ℓ′ : Level}
+  ∀ {ℓ ℓ′}
   {A : Set ℓ}
   {B : Set ℓ′}
   (f : A → B)
@@ -66,3 +65,35 @@ cong :
   → ---------
   f x ≡ f y
 cong _ refl = refl
+
+cong₂ :
+  ∀ {ℓ ℓ′}
+  {A A′ : Set ℓ}
+  {B : Set ℓ′}
+  (f : A → A′ → B)
+  {x y : A}
+  {x′ y′ : A′}
+  (p : x ≡ y)
+  (q : x′ ≡ y′)
+  → -----------
+  f x x′ ≡ f y y′
+cong₂ _ refl refl = refl
+
+-- Substitution
+subst :
+  ∀ {ℓ ℓ′}
+  {A : Set ℓ}
+  (B : A → Set ℓ′)
+  {x y : A}
+  (p : x ≡ y)
+  → ---------
+  B x → B y
+subst _ refl = λ a → a
+
+-- Type coercion
+coe :
+  ∀ {ℓ}
+  {A B : Set ℓ}
+  → -----------
+  A ≡ B → A → B
+coe r a = subst id r a
