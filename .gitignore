@@ -1,8 +1,9 @@
 *~
 
-# Created by https://www.gitignore.io/api/haskell
+#
+# Haskell
+#
 
-### Haskell ###
 dist
 dist-*
 cabal-dev
@@ -24,13 +25,30 @@ cabal.sandbox.config
 cabal.project.local
 .HTF/
 
+#
+# Agda
+#
 
-# End of https://www.gitignore.io/api/haskell
-
-# Created by https://www.gitignore.io/api/agda
-
-### Agda ###
 *.agdai
 
+#
+# OCaml
+#
 
-# End of https://www.gitignore.io/api/agda
+*.annot
+*.cmo
+*.cma
+*.cmi
+*.a
+*.o
+*.cmx
+*.cmxs
+*.cmxa
+_build/
+*.byte
+*.native
+setup.data
+setup.log
+.merlin
+*.install
+_opam/
