@@ -11,7 +11,9 @@ myRight :: Bool -> MyEither
 myRight x _ g = g x
 
 myEither :: forall t . (Int -> t) -> (Bool -> t) -> MyEither -> t
+-- Let's get pointfrrrrreeee!
 myEither = flip . flip id
+-- myEither f g e = e f g
 
 main :: IO ()
 main = do
