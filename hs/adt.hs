@@ -1,7 +1,7 @@
 -- | Haskell's data types can be simultaneously positive and negative.
 data P a
   = Cons a -- a constructor
-  | Getter (A a -> a) -- an eliminator
+  | Getter (P a -> a) -- an eliminator
 
 p :: P Int
 p = Cons 42
@@ -13,7 +13,7 @@ getter = Getter $ \x ->
 
 elim :: P Int -> P Int -> IO ()
 elim p g = case g of
-  Getter f -> print $ f a
+  Getter f -> print $ f p
 
 main :: IO ()
-main = elim a getter
+main = elim p getter
