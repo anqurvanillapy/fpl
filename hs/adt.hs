@@ -7,13 +7,12 @@ p :: P Int
 p = Cons 42
 
 getter :: P Int
-getter = Getter $ \x ->
-  case x of
-    Cons n -> n
+getter = Getter fn
+  where
+    fn (Cons n) = n
 
 elim :: P Int -> P Int -> IO ()
-elim p g = case g of
-  Getter f -> print $ f p
+elim p (Getter f) = print $ f p
 
 main :: IO ()
 main = elim p getter
