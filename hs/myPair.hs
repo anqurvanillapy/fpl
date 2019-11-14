@@ -10,10 +10,10 @@ myPair = flip . flip id
 -- myPair x y f = f x y
 
 proj1 :: MyPair -> Int
-proj1 p = p (\x y -> x)
+proj1 p = p (\x _ -> x)
 
 proj2 :: MyPair -> Bool
-proj2 p = p (\x y -> y)
+proj2 p = p (\_ y -> y)
 
 main :: IO ()
 main = do
