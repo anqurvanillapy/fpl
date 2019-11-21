@@ -15,7 +15,7 @@ const B = {
   False: _ => y => y,
   // Use the `Unit` to prevent being stuck at the `p`, due to eager evaluation.
   IfThenElse: p => a => b => p(a)(b)(Unit),
-  show: b => b(_ => 'True')(_ => 'False')
+  show: b => b('True')('False')
 }
 
 const CN = {
@@ -35,6 +35,27 @@ Print(B.show(CN.IsZ(CN.Z)))
 Print(B.show(CN.IsZ(CN.Suc(CN.Z))))
 Print(CN.show(CN.Add(CN.Suc(CN.Z))(CN.Suc(CN.Z))))
 Print(CN.show(CN.Pred(CN.Suc(CN.Z))))
+Print('---')
+
+const SN = {
+  type: 'scott',
+  Z: _ => x => x,
+  Suc: n => f => _ => f(n),
+  IsZ: n => n(_ => B.False)(B.True),
+  // The 'fold' operation for N, or the recursor.
+  Rec: n => f => x => n(pred => SN.Suc(SN.Rec(pred)(f)(x)))(x),
+  Add: m => n => SN.Rec(m)(SN.Suc)(n),
+  Pred: n => n(Id)(n),
+  show: n => n(x => SN.show(x) + 1)(0)
+}
+
+Print(`Numerals: ${SN.type}`)
+Print(SN.show(SN.Z))
+Print(SN.show(SN.Suc(SN.Z)))
+Print(B.show(SN.IsZ(SN.Z)))
+Print(B.show(SN.IsZ(SN.Suc(SN.Z))))
+Print(SN.show(SN.Add(SN.Suc(SN.Z))(SN.Suc(SN.Z))))
+Print(SN.show(SN.Pred(SN.Suc(SN.Z))))
 Print('---')
 
 Print('Booleans:')
