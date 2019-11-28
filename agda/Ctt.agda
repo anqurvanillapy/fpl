@@ -54,6 +54,6 @@ funExt : ∀ {ℓ} {A : Set ℓ} {B : A → Set ℓ} {f g : (x : A) → B x}
 funExt p i x = p x i
 -- `p` matches the 1st parameter,
 -- `i` matches the dimension of the 1st parameter,
--- `i` matches `(x : A)`,
+-- `x` matches `(x : A)`,
 -- `funExt p i x = {!!}` the goal matches `B x`,
 -- `(p x) i` is obvious.
