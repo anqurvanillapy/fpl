@@ -22,3 +22,5 @@ _ = refl
 thm : ∀ {a : ℕ} → add Z a ≡ a
 thm {a = Z} = refl
 thm {a = (S m)} = cong S thm
+-- Confluence checking is not supported;
+-- Check out Jesper Cockx's Phd thesis for overlapping patterns.
