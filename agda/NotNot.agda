@@ -15,4 +15,4 @@ postulate
 Alright : ∀ {A : Set} → Not (Not A) → A
 Alright p = LEM p
 
--- Constructive LEM requires hProp, hSet, isSet, etc.
+-- Constructive LEM requires hProp, hSet, Discrete, etc.
